@@ -1228,7 +1228,7 @@ function DoctorDetalle({ patient, onBack, fontSizeMultiplier, activeColors }: Do
   const valRange = maxVal - minVal || 10;
 
   const points = pulsoHistorico.map((val, idx) => {
-    const x = (idx / (pulsoHistorico.length - 1)) * svgWidth;
+    const x = pulsoHistorico.length > 1 ? (idx / (pulsoHistorico.length - 1)) * svgWidth : svgWidth / 2;
     const y = svgHeight - 12 - ((val - minVal) / valRange) * (svgHeight - 24);
     return { x, y, val };
   });
@@ -1249,7 +1249,7 @@ function DoctorDetalle({ patient, onBack, fontSizeMultiplier, activeColors }: Do
   const minO2 = Math.min(...oxigenoHistorico, 85);
   const o2Range = maxO2 - minO2 || 10;
   const o2Points = oxigenoHistorico.map((val, idx) => {
-    const x = (idx / (oxigenoHistorico.length - 1)) * svgWidth;
+    const x = oxigenoHistorico.length > 1 ? (idx / (oxigenoHistorico.length - 1)) * svgWidth : svgWidth / 2;
     const y = svgHeight - 12 - ((val - minO2) / o2Range) * (svgHeight - 24);
     return { x, y, val };
   });
@@ -1268,7 +1268,7 @@ function DoctorDetalle({ patient, onBack, fontSizeMultiplier, activeColors }: Do
   const minStr = Math.min(...estresHistorico, 0);
   const strRange = maxStr - minStr || 100;
   const strPoints = estresHistorico.map((val, idx) => {
-    const x = (idx / (estresHistorico.length - 1)) * svgWidth;
+    const x = estresHistorico.length > 1 ? (idx / (estresHistorico.length - 1)) * svgWidth : svgWidth / 2;
     const y = svgHeight - 12 - ((val - minStr) / strRange) * (svgHeight - 24);
     return { x, y, val };
   });
@@ -1766,7 +1766,7 @@ function DoctorReportes({
   const valRange = maxVal - minVal || 10;
 
   const points = pulseAvg.map((val, idx) => {
-    const x = (idx / (pulseAvg.length - 1)) * svgWidth;
+    const x = pulseAvg.length > 1 ? (idx / (pulseAvg.length - 1)) * svgWidth : svgWidth / 2;
     const y = svgHeight - 12 - ((val - minVal) / valRange) * (svgHeight - 24);
     return { x, y, val };
   });
